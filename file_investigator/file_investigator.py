@@ -4,16 +4,23 @@ import streamlit as st
 
 
 def investigate_file(uploaded_file):
-    if uploaded_file == pdf
-        do stuff
-    else
+    file_type = uploaded_file.type
+    if file_type == "application/pdf":
+        st.write("File Type: PDF")
+    else:
         img = Image.open(uploaded_file)
         img_data = np.array(img)
+        mode = img.mode
+        info = img.info
+        width = img.width / 300
+        height = img.height / 300
+        st.write("Width:", str(width))
+        st.write("Height:", str(height))
+        st.write(info)
+        st.write(mode)
 
-        file_size_px = img_data.size
-        file_size_inch = file_size_px
 
-        st.write("File Dimensions:", file_size_inch)
+    st.write("File Type:", file_type)
 
 
 
@@ -23,7 +30,7 @@ def main():
     if uploaded_file is not None:
         investigate_file(uploaded_file)
         st.divider()
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        # st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         st.divider()
 
 
