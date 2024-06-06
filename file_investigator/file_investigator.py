@@ -14,10 +14,20 @@ def investigate_file(uploaded_file):
         info = img.info
         width = img.width / 300
         height = img.height / 300
+        file_res = info.get('dpi')
+        x_resolution = info["photoshop"][1005]["XResolution"]
+        y_resolution = info["photoshop"][1005]["YResolution"]
+        # photoshop_res = photoshop_info[1]["Xresolutoin"]
         st.write("Width:", str(width))
         st.write("Height:", str(height))
-        st.write(info)
-        st.write(mode)
+        st.write("File Res", file_res)
+        st.write("X Resolution", int(x_resolution))
+        st.write("Y Resolution", int(x_resolution))
+        # st.write(info)
+        st.write("File mode:", mode)
+
+
+
 
 
     st.write("File Type:", file_type)
@@ -36,3 +46,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
